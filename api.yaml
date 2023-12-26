@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: Swagger Backend Api's
+  description: |-
+    This are sample apis
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: brgawande@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:4000/
+
+schemes: [http, https]
+
+paths:
+# Returns a string
+  /string:
+    get:
+      summary: Returns a String
+      description: Its just returing a fake string
+      responses:
+        "200":
+          description: Successful operation
+           content:
+            application/json:
+              schema:
+                type: string
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Internal Server Error
+        "405":
+          description: Validation exception
+# Returns an object
+  /user:
+    get:
+      summary: Returns an Object
+      description: Its just returing an Object
+      responses:
+        "200":
+          description: Successful operation
+           content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Internal Server Error
+        "405":
+          description: Validation exception
+
+# Returning Array Of Users
+  /users:
+      get:
+        summary: Returns an Array Of Objects
+        description: Its just returing an Array of Objects
+        responses:
+          "200":
+            description: Successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+          "400":
+            description: Invalid ID supplied
+          "404":
+            description: Internal Server Error
+          "405":
+            description: Validation exception
+
+# Retuaning a dynamioc id Reading data through path
+  /users/{userId}:
+      get:
+        summary: Returns an single id from users
+        description: Its just returing an single id from users
+        parameters:
+          - name: userId
+            in: path
+            required: true
+            schema:
+              type: integer
+        responses:
+          "200":
+            description: Successful operation
+          "400":
+            description: Invalid ID supplied
+          "404":
+            description: Internal Server Error
+          "405":
+            description: Validation exception
+
+# Post json/body
+  /create:
+      post:
+        summary: Posting Data
+        description: This will add data to users
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+        responses:
+          "200":
+            description: Successful operation
+          "400":
+            description: Invalid ID supplied
+          "404":
+            description: Internal Server Error
+          "405":
+            description: Validation exception
+      
